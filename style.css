@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(15, 15, 16);
+    background-color: black;
 }
 .container {
     margin: auto;
@@ -11,5 +11,40 @@ body {
     0 0 3px #fff,  /* Medium inner glow */
     0 0 5px #0ff,  /* Large inner glow */
     0 0 8px #0ff,  /* Larger outer glow */
-    0 0 15px #0ff;  /* Largest outer glow */ ;
+    0 0 15px #0ff;  /* Largest outer glow */
+}
+
+.display {
+    margin: auto;
+    padding: 10px;
+    color: aqua;
+    font-size: 80px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-top: 50px;
+    width: 340px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid aqua;
+    box-shadow:  0 0 1px #fff,   /* Small inner glow */
+    0 0 2px #fff,  /* Medium inner glow */
+    0 0 3px #0ff,  /* Large inner glow */
+    0 0 6px #0ff,  /* Larger outer glow */
+    0 0 10px #0ff;  /* Largest outer glow */ ;
+}
+.line {
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+button {
+    font-size: 30px;
+    color: #0ff;
+    background-color: black;
+    margin: auto;
+    outline: none;
 }
