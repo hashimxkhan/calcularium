@@ -1,6 +1,7 @@
 let firstNum
 let secondNum
 let operator
+let counter = 0
 function add(a, b) {
     return a + b
 }
@@ -38,8 +39,35 @@ function operate(firstNum, secondNum, operator) {
     }
 }
 
+
 const display = document.querySelector(".display")
-display.textContent = "000"
+const digits = document.querySelectorAll(".digit")
+digits.forEach(element => { 
+    element.addEventListener("click", function(event) {
+        let cur = display.textContent
+        display.textContent = cur +event.target.textContent
+    })
+});
+const operators = document.querySelectorAll(".operator")
+operators.forEach(element => {
+    element.addEventListener("click", function(event) {
+        element.style.backgroundColor = "gray"
+        operator = event.target.textContent
+        firstNum = display.textContent
+    })
+    
+});
+const ac = document.querySelector(".ac") 
+ac.addEventListener("click", function(){
+    display.textContent = ""
+})
+
+const del = document.querySelector(".del") 
+del.addEventListener("click", function(){
+    let content = display.textContent.substring(0, display.textContent.length - 1)
+    display.textContent = content
+})
+
 /*
 const buttons = document.querySelector(".buttons")
 for (let i = 0; i <= 9; i++) {
