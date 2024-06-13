@@ -20,8 +20,9 @@ body {
     padding: 10px;
     color: aqua;
     margin-bottom: 35px;
-    font-size: 80px;
+    font-size: 60px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: end;
     align-items: end;
     margin-top: 50px;
