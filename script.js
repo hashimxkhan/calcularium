@@ -12,6 +12,9 @@ function multiply(a, b) {
     return a * b
 }
 function divide(a, b) {
+    if (b === 0) {
+        return "ERROR"
+    }
     return a / b
 }
 function mod(a, b) {
@@ -51,15 +54,19 @@ const display = document.querySelector(".display")
 const digits = document.querySelectorAll(".digit")
 digits.forEach(element => { 
     element.addEventListener("click", function(event) {
+        if (firstNum === ans && secondNum === undefined && operator === undefined) {
+            firstNum = undefined
+        }
         let cur = event.target.textContent
         
         if (operator === undefined) {
+            if (ans === firstNum) {
+                firstNum = undefined
+            }
             firstNum = (firstNum === undefined) ? cur : firstNum + cur
-            firstNum = Number(firstNum)
             display.textContent = firstNum
         } else {
             secondNum = (secondNum === undefined) ? cur : secondNum + cur
-            secondNum = Number(secondNum)
             display.textContent = secondNum
         }
     })
@@ -79,25 +86,30 @@ ac.addEventListener("click", function(){
     display.textContent = ""
     firstNum = undefined
     secondNum = undefined
+    operator = undefined
 })
 
 const del = document.querySelector(".del") 
 del.addEventListener("click", function(){
-    let content = display.textContent.substring(0, display.textContent.length - 1)
+    let content = display.textContent.substring(0,
+         display.textContent.length - 1)
     display.textContent = content
+    if (operator === undefined) {
+        firstNum = firstNum.substring(0, firstNum.length - 1)
+    } else {
+        secondNum = secondNum.substring(0, secondNum.length - 1)
+    }
 })
 const equals = document.querySelector(".equals")
 equals.addEventListener("click", function() {
    if (firstNum != undefined && secondNum != undefined) {
     firstNum = Number(firstNum)
     secondNum = Number(secondNum)
-    display.textContent = operate(firstNum, secondNum, operator)
-    console.log(firstNum)
-    console.log(operator)
-    console.log(secondNum)
-    console.log(operate(firstNum,secondNum,operator))
-    console.log(typeof(operator))
+    display.textContent = parseFloat((operate(firstNum, secondNum,
+         operator)).toFixed(4))
     secondNum = undefined
-    firstNum = ans
+    firstNum = ans.toString()
+    operator = undefined
    }
 })
+
